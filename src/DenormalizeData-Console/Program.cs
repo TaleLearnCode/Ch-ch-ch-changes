@@ -3,9 +3,7 @@ using Microsoft.VisualBasic.FileIO;
 using ShellProgressBar;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using TaleLearnCode.ChChChChanges.Common;
 
@@ -79,12 +77,20 @@ namespace TaleLearnCode.ChChChChanges.DenormalizeData
 				string[] fields = parser.ReadFields();
 				if (presentations.ContainsKey(fields[PresentationFields.Id]))
 				{
+
 					if (!presentations[fields[PresentationFields.Id]].Speakers.Contains(fields[PresentationFields.Speaker]))
 						presentations[fields[PresentationFields.Id]].Speakers.Add(fields[PresentationFields.Speaker]);
-					if (!presentations[fields[PresentationFields.Id]].Topics.Contains(fields[PresentationFields.Topic]))
-						presentations[fields[PresentationFields.Id]].Topics.Add(fields[PresentationFields.Topic]);
-					if (!presentations[fields[PresentationFields.Id]].Tags.Contains(fields[PresentationFields.Tag]))
-						presentations[fields[PresentationFields.Id]].Tags.Add(fields[PresentationFields.Tag]);
+
+					if (presentations[fields[PresentationFields.Id]].Topics.FindIndex(x => x.Id == fields[PresentationFields.TopicId]) == -1)
+						presentations[fields[PresentationFields.Id]].Topics.Add(
+							Metadata.TopicFactory(fields[PresentationFields.TopicId],
+							fields[PresentationFields.TopicName]));
+
+					if (presentations[fields[PresentationFields.Id]].Tags.FindIndex(x => x.Id == fields[PresentationFields.TagId]) == -1)
+						presentations[fields[PresentationFields.Id]].Tags.Add(
+							Metadata.TagFactory(fields[PresentationFields.TagId],
+							fields[PresentationFields.TagName]));
+
 				}
 				else
 					presentations.Add(fields[PresentationFields.Id], new Presentation(fields));
