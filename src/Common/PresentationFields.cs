@@ -12,6 +12,8 @@
 		public const int TopicName = 7;
 		public const int TagId = 8;
 		public const int TagName = 9;
-		public const int Speaker = 10;
+		public const int SpeakerId = 10;
+		public const int SpeakerFirstName = 11;
+		public const int SpeakerLastName = 12;
 	}
 }

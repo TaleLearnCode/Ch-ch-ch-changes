@@ -20,7 +20,7 @@ namespace TaleLearnCode.ChChChChanges.Common
 		public string Title { get; set; }
 
 		[JsonPropertyName("speakers")]
-		public List<string> Speakers { get; set; }
+		public List<Speaker> Speakers { get; set; } = new List<Speaker>();
 
 		[JsonPropertyName("startDateTime")]
 		public DateTime StartDateTime { get; set; }
@@ -44,11 +44,19 @@ namespace TaleLearnCode.ChChChChanges.Common
 			StartDateTime = Convert.ToDateTime(fields[PresentationFields.StartDateTime]);
 			EndDateTime = Convert.ToDateTime(fields[PresentationFields.EndDateTime]);
 			Title = fields[PresentationFields.Title];
-			Speakers = new List<string>() { fields[PresentationFields.Speaker] };
 
-
-			Tags.Add(Metadata.TagFactory(fields[PresentationFields.TagId], fields[PresentationFields.TagName]));
-			Topics.Add(Metadata.TopicFactory(fields[PresentationFields.TopicId], fields[PresentationFields.TopicName]));
+			Tags.Add(
+				Metadata.TagFactory(
+					fields[PresentationFields.TagId],
+					fields[PresentationFields.TagName]));
+			Topics.Add(
+				Metadata.TopicFactory(
+					fields[PresentationFields.TopicId],
+					fields[PresentationFields.TopicName]));
+			Speakers.Add(
+				new Speaker(fields[PresentationFields.SpeakerId],
+				fields[PresentationFields.SpeakerFirstName],
+				fields[PresentationFields.SpeakerLastName]));
 
 		}
 

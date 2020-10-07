@@ -7,10 +7,12 @@ SELECT Session.EventId,
        SessionPeriod.EndDateTime,
        Session.Title,
        CONCAT('Topic-', Topic.Id) AS TopicId,
-     Topic.Name AS TopicName,
+       Topic.Name AS TopicName,
        CONCAT('Tag-', Technology.Id) AS TagId,
-     Technology.Name AS TagName,
-       CONCAT(Contact.FirstName, ' ', Contact.LastName) AS Speaker
+       Technology.Name AS TagName,
+       CONCAT('Speaker-', Contact.Id) AS SpeakerId,
+       Contact.FirstName AS SpeakerFirstName,
+       Contact.LastName AS SpeakerLastName
   FROM Session
  INNER JOIN EventDetail ON EventDetail.Id = Session.EventId
  INNER JOIN SessionPeriod ON SessionPeriod.Id = Session.SessionPeriodId

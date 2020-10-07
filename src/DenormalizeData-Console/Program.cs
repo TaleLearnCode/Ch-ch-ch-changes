@@ -78,8 +78,12 @@ namespace TaleLearnCode.ChChChChanges.DenormalizeData
 				if (presentations.ContainsKey(fields[PresentationFields.Id]))
 				{
 
-					if (!presentations[fields[PresentationFields.Id]].Speakers.Contains(fields[PresentationFields.Speaker]))
-						presentations[fields[PresentationFields.Id]].Speakers.Add(fields[PresentationFields.Speaker]);
+					if (presentations[fields[PresentationFields.Id]].Speakers.FindIndex(x => x.Id == fields[PresentationFields.SpeakerId]) == -1)
+						presentations[fields[PresentationFields.SpeakerId]].Speakers.Add(
+							new Speaker(
+								fields[PresentationFields.SpeakerId],
+								fields[PresentationFields.SpeakerFirstName],
+								fields[PresentationFields.SpeakerLastName]));
 
 					if (presentations[fields[PresentationFields.Id]].Topics.FindIndex(x => x.Id == fields[PresentationFields.TopicId]) == -1)
 						presentations[fields[PresentationFields.Id]].Topics.Add(
