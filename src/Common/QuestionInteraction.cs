@@ -39,7 +39,7 @@ namespace TaleLearnCode.ChChChChanges.Common
 
 			using var progressBar = new ProgressBar(428818, ProgressBarMessage(counter));
 
-			System.IO.StreamReader file = new System.IO.StreamReader(sourceFilePath);
+			using System.IO.StreamReader file = new System.IO.StreamReader(sourceFilePath);
 			while ((line = file.ReadLine()) != null)
 			{
 				returnValue.Add(new QuestionInteraction(line));
