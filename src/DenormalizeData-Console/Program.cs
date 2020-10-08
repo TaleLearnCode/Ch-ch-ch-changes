@@ -13,20 +13,6 @@ namespace TaleLearnCode.ChChChChanges.DenormalizeData
 	{
 		static async Task Main(string[] args)
 		{
-			WelcomeUser();
-
-
-			//var execute = true;
-			//while (execute)
-			//{
-			//	Console.WriteLine("Select an option:");
-			//	Console.WriteLine("\t[1] Write CPL19 Data");
-			//}
-
-			
-			
-			
-			
 			await AddDataToCosmosAsync();
 		}
 
@@ -47,15 +33,22 @@ namespace TaleLearnCode.ChChChChanges.DenormalizeData
 		private static async Task AddDataToCosmosAsync()
 		{
 
-			Console.WriteLine();
-			Console.WriteLine("Press any key to start the writing data to Cosmos...");
-			Console.ReadKey();
-
-			CosmosClient client = new CosmosClient(Settings.CosmosConnectionString);
+			using CosmosClient client = new CosmosClient(Settings.CosmosConnectionString);
 			CosmosDatabase database = client.GetDatabase(Settings.ShindigManagerDatabaseName);
-
-			//await AddPresentationsToCosmosAsync(database);
-			await AddMetadataToCosmosAsync(database);
+			
+			var execute = true;
+			while (execute)
+			{
+				WelcomeUser();
+				Console.WriteLine("Select an option:");
+				Console.WriteLine("\tUpload [P]resentations");
+				Console.WriteLine("\tUpload [M]etedata");
+				Console.WriteLine("\tE[x]it");
+				var cki = Console.ReadKey();
+				if (cki.Key == ConsoleKey.P) await AddPresentationsToCosmosAsync(database);
+				if (cki.Key == ConsoleKey.M) await AddMetadataToCosmosAsync(database);
+				if (cki.Key == ConsoleKey.X) execute = false;
+			}
 
 		}
 
@@ -64,7 +57,7 @@ namespace TaleLearnCode.ChChChChanges.DenormalizeData
 
 			Console.WriteLine();
 			Console.WriteLine("Retrieving the presentations...");
-			var presentations = GetPresentations();
+			var presentations = GetAllPresentations();
 
 			Console.WriteLine();
 			using var progressBar = new ProgressBar(presentations.Count, "Connecting to the Cosmos DB container");
@@ -110,14 +103,16 @@ namespace TaleLearnCode.ChChChChanges.DenormalizeData
 
 		}
 
-		private static List<Presentation> GetPresentations()
+		private static List<Presentation> GetAllPresentations()
 		{
+			var presentations = new List<Presentation>();
+			presentations.AddRange(GetEventPresentations("CPL19"));
+			presentations.AddRange(GetEventPresentations("CPL20"));
+			return presentations;
+		}
 
-			Console.WriteLine();
-			Console.WriteLine("Which event should be imported: ");
-			Console.WriteLine("\t[CPL19] Code PaLOUsa 2019");
-			Console.WriteLine("\t[CPL20] Code PaLOUsa 2020");
-			var eventId = Console.ReadLine();
+		private static List<Presentation> GetEventPresentations(string eventId)
+		{
 
 			var presentations = new Dictionary<string, Presentation>();
 
