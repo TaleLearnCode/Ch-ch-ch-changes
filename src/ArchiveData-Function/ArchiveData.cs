@@ -36,10 +36,10 @@ namespace TaleLearnCode.ChChChChanges.Functions
 
 		[FunctionName("ArchiveData")]
 		public static async Task RunAsync([CosmosDBTrigger(
-						databaseName: "moveData",
-						collectionName: "archival",
-						ConnectionStringSetting = "CosmosConnectionString",
-						LeaseCollectionName = "leases",
+			databaseName: "moveData",
+			collectionName: "archival",
+			ConnectionStringSetting = "CosmosConnectionString",
+			LeaseCollectionName = "leases",
 			CreateLeaseCollectionIfNotExists = true)]IReadOnlyList<Document> documents, ILogger log)
 		{
 			if (documents != null && documents.Count > 0)
@@ -55,8 +55,6 @@ namespace TaleLearnCode.ChChChChanges.Functions
 						log.LogError($"Error archiving document id {document.Id}: {ex.Message}");
 					}
 				}
-				//log.LogInformation("Documents modified " + documents.Count);
-				//log.LogInformation("First document Id " + documents[0].Id);
 			}
 		}
 

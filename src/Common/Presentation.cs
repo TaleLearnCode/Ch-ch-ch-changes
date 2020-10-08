@@ -29,10 +29,10 @@ namespace TaleLearnCode.ChChChChanges.Common
 		public DateTime EndDateTime { get; set; }
 
 		[JsonPropertyName("tags")]
-		public List<Metadata> Tags { get; } = new List<Metadata>();
+		public List<Metadata> Tags { get; set; } = new List<Metadata>();
 
 		[JsonPropertyName("topics")]
-		public List<Metadata> Topics { get; } = new List<Metadata>();
+		public List<Metadata> Topics { get; set; } = new List<Metadata>();
 
 		public Presentation() { }
 

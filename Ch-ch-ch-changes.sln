@@ -13,13 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Data\CPL19.csv = Data\CPL19.csv
 		Data\CPL20.csv = Data\CPL20.csv
+		src\SQL Scripts\GetMetadata.sql = src\SQL Scripts\GetMetadata.sql
 		src\SQL Scripts\GetSessionDetails.sql = src\SQL Scripts\GetSessionDetails.sql
+		Data\Metadata.csv = Data\Metadata.csv
 		Data\QuestionInteractions.csv = Data\QuestionInteractions.csv
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DenormalizeData-Console", "src\DenormalizeData-Console\DenormalizeData-Console.csproj", "{0BC53BE0-FEAB-4095-8A9D-BD494066B2C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DenormalizeData-Console", "src\DenormalizeData-Console\DenormalizeData-Console.csproj", "{0BC53BE0-FEAB-4095-8A9D-BD494066B2C9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchiveData-Function", "src\ArchiveData-Function\ArchiveData-Function.csproj", "{CCAFD3A0-1F83-4473-B689-AC0E0612ABF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DenormalizeData-Function", "src\DenormalizeData-Function\DenormalizeData-Function.csproj", "{7ED62BC1-DCBC-4180-B008-E23A2875B41E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,10 @@ Global
 		{CCAFD3A0-1F83-4473-B689-AC0E0612ABF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCAFD3A0-1F83-4473-B689-AC0E0612ABF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCAFD3A0-1F83-4473-B689-AC0E0612ABF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ED62BC1-DCBC-4180-B008-E23A2875B41E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ED62BC1-DCBC-4180-B008-E23A2875B41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ED62BC1-DCBC-4180-B008-E23A2875B41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ED62BC1-DCBC-4180-B008-E23A2875B41E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

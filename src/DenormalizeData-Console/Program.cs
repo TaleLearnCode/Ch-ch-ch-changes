@@ -14,6 +14,19 @@ namespace TaleLearnCode.ChChChChanges.DenormalizeData
 		static async Task Main(string[] args)
 		{
 			WelcomeUser();
+
+
+			//var execute = true;
+			//while (execute)
+			//{
+			//	Console.WriteLine("Select an option:");
+			//	Console.WriteLine("\t[1] Write CPL19 Data");
+			//}
+
+			
+			
+			
+			
 			await AddDataToCosmosAsync();
 		}
 
@@ -34,26 +47,65 @@ namespace TaleLearnCode.ChChChChanges.DenormalizeData
 		private static async Task AddDataToCosmosAsync()
 		{
 
-			var presentations = GetPresentations();
-
 			Console.WriteLine();
 			Console.WriteLine("Press any key to start the writing data to Cosmos...");
 			Console.ReadKey();
-			Console.WriteLine();
-			Console.WriteLine();
-			using var progressBar = new ProgressBar(presentations.Count, "Connecting to the database");
 
 			CosmosClient client = new CosmosClient(Settings.CosmosConnectionString);
 			CosmosDatabase database = client.GetDatabase(Settings.ShindigManagerDatabaseName);
-			CosmosContainer container = database.GetContainer(Settings.ShindigsContainerName);
 
+			//await AddPresentationsToCosmosAsync(database);
+			await AddMetadataToCosmosAsync(database);
+
+		}
+
+		private static async Task AddPresentationsToCosmosAsync(CosmosDatabase database)
+		{
+
+			Console.WriteLine();
+			Console.WriteLine("Retrieving the presentations...");
+			var presentations = GetPresentations();
+
+			Console.WriteLine();
+			using var progressBar = new ProgressBar(presentations.Count, "Connecting to the Cosmos DB container");
 			int counter = 0;
+
+			CosmosContainer container = database.GetContainer(Settings.ShindigsContainerName);
 
 			foreach (var presentation in presentations)
 			{
 				counter++;
 				await container.CreateItemAsync(presentation);
 				progressBar.Tick($"Writing presentation {counter} of {presentations.Count}");
+			}
+
+		}
+
+		private static async Task AddMetadataToCosmosAsync(CosmosDatabase database)
+		{
+
+			Console.WriteLine();
+			Console.WriteLine("Retrieving the metadata...");
+			var metadata = GetMetadata();
+
+			Console.WriteLine();
+			using var progressBar = new ProgressBar(metadata.Metadata.Count + metadata.Speakers.Count, "Connecting to the Cosmos DB container");
+			int counter = 0;
+
+			CosmosContainer container = database.GetContainer(Settings.MetadataContainerName);
+
+			foreach (var item in metadata.Metadata)
+			{
+				counter++;
+				await container.CreateItemAsync(item);
+				progressBar.Tick($"Writing metadata item {counter} of {metadata.Metadata.Count + metadata.Speakers.Count}");
+			}
+
+			foreach (var speaker in metadata.Speakers)
+			{
+				counter++;
+				await container.CreateItemAsync(speaker);
+				progressBar.Tick($"Writing metadata item {counter} of {metadata.Metadata.Count + metadata.Speakers.Count}");
 			}
 
 		}
@@ -75,11 +127,12 @@ namespace TaleLearnCode.ChChChChanges.DenormalizeData
 			while (!parser.EndOfData)
 			{
 				string[] fields = parser.ReadFields();
+
 				if (presentations.ContainsKey(fields[PresentationFields.Id]))
 				{
 
 					if (presentations[fields[PresentationFields.Id]].Speakers.FindIndex(x => x.Id == fields[PresentationFields.SpeakerId]) == -1)
-						presentations[fields[PresentationFields.SpeakerId]].Speakers.Add(
+						presentations[fields[PresentationFields.Id]].Speakers.Add(
 							new Speaker(
 								fields[PresentationFields.SpeakerId],
 								fields[PresentationFields.SpeakerFirstName],
@@ -101,6 +154,36 @@ namespace TaleLearnCode.ChChChChanges.DenormalizeData
 			}
 
 			return presentations.Values.ToList();
+
+		}
+
+		private static (List<Metadata> Metadata, List<Speaker> Speakers) GetMetadata()
+		{
+
+			var metadata = new List<Metadata>();
+			var speakers = new List<Speaker>();
+
+			using var parser = new TextFieldParser($@"D:\Repros\TaleLearnCode\Presentations\Ch-Ch-Ch-Changes\Data\Metadata.csv");
+			parser.TextFieldType = FieldType.Delimited;
+			parser.SetDelimiters(",");
+			while (!parser.EndOfData)
+			{
+				string[] fields = parser.ReadFields();
+				if (fields[MetadataFields.Type] != "speaker")
+					metadata.Add(
+						new Metadata(
+							fields[MetadataFields.Type],
+							fields[MetadataFields.Id],
+							fields[MetadataFields.Name]));
+				else
+					speakers.Add(
+						new Speaker(
+							fields[MetadataFields.Id],
+							fields[MetadataFields.FirstName],
+							fields[MetadataFields.LastName]));
+			}
+
+			return (metadata, speakers);
 
 		}
 
