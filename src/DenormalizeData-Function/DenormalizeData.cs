@@ -21,7 +21,7 @@ namespace TaleLearnCode.ChChChChanges.Functions
 		{
 			_client = new CosmosClient(Settings.CosmosConnectionString);
 			_database = _client.GetDatabase(Settings.ShindigManagerDatabaseName);
-			_container = _database.GetContainer(Settings.ShindigsContainerName);
+			_container = _database.GetContainer(Settings.PresentationsContainerName);
 		}
 
 		[FunctionName("DenormalizeData")]

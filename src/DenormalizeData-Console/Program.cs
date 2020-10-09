@@ -63,7 +63,7 @@ namespace TaleLearnCode.ChChChChanges.DenormalizeData
 			using var progressBar = new ProgressBar(presentations.Count, "Connecting to the Cosmos DB container");
 			int counter = 0;
 
-			CosmosContainer container = database.GetContainer(Settings.ShindigsContainerName);
+			CosmosContainer container = database.GetContainer(Settings.PresentationsContainerName);
 
 			foreach (var presentation in presentations)
 			{
