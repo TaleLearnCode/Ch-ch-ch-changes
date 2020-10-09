@@ -33,6 +33,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReplicatingData-Console", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReplicatingData-Function", "src\ReplicatingData-Function\ReplicatingData-Function.csproj", "{6FFBBAC4-E515-4BCC-8CAB-4146D5CE03D9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Event-Driven Architecture", "Event-Driven Architecture", "{98319DFD-EA37-4997-BB20-23B840572219}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventDrivenArchitecture-Console", "src\EventDrivenArchitecture-Console\EventDrivenArchitecture-Console.csproj", "{1F2E428A-29AC-483A-8563-ABDC173D83FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +71,10 @@ Global
 		{6FFBBAC4-E515-4BCC-8CAB-4146D5CE03D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FFBBAC4-E515-4BCC-8CAB-4146D5CE03D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FFBBAC4-E515-4BCC-8CAB-4146D5CE03D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F2E428A-29AC-483A-8563-ABDC173D83FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F2E428A-29AC-483A-8563-ABDC173D83FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F2E428A-29AC-483A-8563-ABDC173D83FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F2E428A-29AC-483A-8563-ABDC173D83FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +86,7 @@ Global
 		{BF52995D-D7A9-40F9-BF37-23FDCC19BA58} = {DDD1150F-EB5F-4D40-90AB-86810CFB1D95}
 		{2B5AF617-BAED-4AF7-B808-260A5AD514E5} = {94E11704-B8FE-4EDD-9168-A3B2AD601C2E}
 		{6FFBBAC4-E515-4BCC-8CAB-4146D5CE03D9} = {94E11704-B8FE-4EDD-9168-A3B2AD601C2E}
+		{1F2E428A-29AC-483A-8563-ABDC173D83FA} = {98319DFD-EA37-4997-BB20-23B840572219}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B250357-A6D7-4256-B401-B5E4B604343B}
