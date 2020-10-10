@@ -25,13 +25,17 @@ namespace TaleLearnCode.ChChChChanges.EventDrivenArchitecture
 			CosmosDatabase database = client.GetDatabase(Settings.OrderManagementDatabaseName);
 			CosmosContainer container = database.GetContainer(Settings.OrdersContainerName);
 
-			while (true)
-			{
-				var order = GetOrder();
-				await container.CreateItemAsync(order);
-				Console.WriteLine($"Saved order #{order.Id}");
-				await Task.Delay(500);
-			}
+			//while (true)
+			//{
+			//	var order = GetOrder();
+			//	await container.CreateItemAsync(order);
+			//	Console.WriteLine($"Saved order #{order.Id}");
+			//	await Task.Delay(500);
+			//}
+
+			var order = GetOrder();
+			await container.CreateItemAsync(order);
+
 		}
 
 		private void GetFakeNames()
@@ -86,6 +90,7 @@ namespace TaleLearnCode.ChChChChanges.EventDrivenArchitecture
 				UserName = customer.UserName,
 				EmailAddress = customer.EmailAddress,
 				ShippingAddress = new PostalAddress(customer.FirstName, customer.LastName, customer.StreetAddress, customer.State, customer.PostalCode, customer.Country),
+				OrderDateTime = DateTime.UtcNow
 			};
 
 			var numberOfItems = rand.Next(1, 10);

@@ -24,16 +24,16 @@ namespace TaleLearnCode.ChChChChanges.Common
 		public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
 		[JsonPropertyName("orderDateTime")]
-		public DateTime OrderDateTime { get; set; }
+		public DateTime? OrderDateTime { get; set; }
 
 		[JsonPropertyName("fulfillmentDateTime")]
-		public DateTime FulfillmentDateTime { get; set; }
+		public DateTime? FulfillmentDateTime { get; set; }
 
 		[JsonPropertyName("inventoryManagementDateTime")]
-		public DateTime InventoryManagementDateTime { get; set; }
+		public DateTime? InventoryManagementDateTime { get; set; }
 
 		[JsonPropertyName("orderConfirmedDateTime")]
-		public DateTime OrderConfirmedDateTime { get; set; }
+		public DateTime? OrderConfirmedDateTime { get; set; }
 
 	}
 
