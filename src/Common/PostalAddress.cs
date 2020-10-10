@@ -15,5 +15,18 @@
 
 		public string Country { get; set; }
 
+		public PostalAddress() { }
+
+		public PostalAddress(string firstName, string lastName, string streetAddress, string state, string postalCode, string country)
+		{
+			FirstName = firstName;
+			LastName = lastName;
+			StreetAddress = streetAddress;
+			State = state;
+			PostalCode = postalCode;
+			Country = country;
+		}
+
 	}
+
 }
