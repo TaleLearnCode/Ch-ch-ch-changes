@@ -2,7 +2,7 @@
   "profiles": {
     "EventDriveArchitecture-Function-Fulfillment": {
       "commandName": "Project",
-      "commandLineArgs": "host start --pause-on-error --port 7080"
+      "commandLineArgs": "host start --pause-on-error --port 7075"
     }
   }
 }

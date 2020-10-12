@@ -2,7 +2,7 @@
   "profiles": {
     "EventDrivenArchitecture-Function-Inventory": {
       "commandName": "Project",
-      "commandLineArgs": "host start --pause-on-error --port 7081"
+      "commandLineArgs": "host start --pause-on-error --port 7076"
     }
   }
 }

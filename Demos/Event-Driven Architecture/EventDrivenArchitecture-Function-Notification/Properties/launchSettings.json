@@ -2,7 +2,7 @@
   "profiles": {
     "EventDrivenArchitecture-Function-Notification": {
       "commandName": "Project",
-      "commandLineArgs": "host start --pause-on-error --port 7082"
+      "commandLineArgs": "host start --pause-on-error --port 7077"
     }
   }
 }
