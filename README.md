@@ -30,4 +30,4 @@ The Azure Cosmos DB change feed listens to an Azure Cosmos container for any cha
 
 | Event | Location | Date | Time | Room | Downloads |
 |-----------|:-----------:|-----------:|-----------:|-----------:|-----------:|
-| Hampton Roads .NET User Group | Hampton Roads, VA [Virtual] | October 13, 2020 | 6:00 pm EDT | [Twitch - 1KevGriff](https://twitch.tv/1kevgriff) | Available After Event |
+| Hampton Roads .NET User Group | Hampton Roads, VA [Virtual] | October 13, 2020 | 6:00 pm EDT | [Twitch - 1KevGriff](https://twitch.tv/1kevgriff) | [Slides](https://chadgreen.blob.core.windows.net/slides/Ch-ch-ch-changes%20-%20Tracing%20Changes%20in%20Azure%20Cosmos%20DB%20-%20Hampton%20Roads%20Net%20User%20Group.pdf) |
