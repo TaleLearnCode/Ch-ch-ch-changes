@@ -13,8 +13,6 @@ namespace Demonstrator
 		static async Task Main(string[] args)
 		{
 
-			//LoopTest();
-
 			CosmosClient cosmosClient = new CosmosClient(Settings.CosmosConnectionString);
 
 			var exit = false;
@@ -29,6 +27,7 @@ namespace Demonstrator
 						await DenormalizeDemo.ExecuteAsync(cosmosClient);
 						break;
 					case DemoOption.EventDrivenArchitecture:
+						await EventDrivenArchitectureDemo.ExecuteAsync(cosmosClient);
 						break;
 					case DemoOption.Exit:
 						exit = true;
@@ -112,23 +111,6 @@ namespace Demonstrator
 
 		}
 
-		private static void LoopTest()
-		{
-			int counter = 0;
-			Console.WriteLine("Press ESC to stop");
-			do
-			{
-				while (!Console.KeyAvailable && counter < 100000)
-				{
-					counter++;
-					Console.WriteLine(counter);
-				}
-				if (counter >= 100000) break;
-			} while (Console.ReadKey(true).Key != ConsoleKey.Escape);
-
-			Console.Beep();
-			Console.WriteLine("Done");
-		}
-
 	}
+
 }

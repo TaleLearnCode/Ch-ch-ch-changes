@@ -40,6 +40,7 @@ namespace TaleLearnCode.ChChChChanges.Functions
 			collectionName: "archival",
 			ConnectionStringSetting = "CosmosConnectionString",
 			LeaseCollectionName = "leases",
+			LeaseCollectionPrefix = "Archival",
 			CreateLeaseCollectionIfNotExists = true)]IReadOnlyList<Document> documents, ILogger log)
 		{
 			if (documents != null && documents.Count > 0)

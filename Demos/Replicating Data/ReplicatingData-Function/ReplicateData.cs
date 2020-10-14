@@ -14,15 +14,13 @@ namespace TaleLearnCode.ChChChChanges.Functions
 	public static class ReplicateData
 	{
 
-		private static readonly CosmosClient _client;
-		private static readonly CosmosDatabase _database;
 		private static readonly CosmosContainer _container;
 
 		static ReplicateData()
 		{
-			_client = new CosmosClient(Settings.CosmosConnectionString);
-			_database = _client.GetDatabase(Settings.ShindigManagerDatabaseName);
-			_container = _database.GetContainer(Settings.PresentationsByTagContainerName);
+			_container = new CosmosClient(Settings.CosmosConnectionString)
+				.GetDatabase(Settings.ShindigManagerDatabaseName)
+				.GetContainer(Settings.PresentationsByTagContainerName);
 		}
 
 		[FunctionName("ReplicateData")]

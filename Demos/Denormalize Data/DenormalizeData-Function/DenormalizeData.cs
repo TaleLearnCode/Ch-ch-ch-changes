@@ -13,15 +13,14 @@ namespace TaleLearnCode.ChChChChanges.Functions
 {
 	public static class DenormalizeData
 	{
-		private static readonly CosmosClient _client;
-		private static readonly CosmosDatabase _database;
+
 		private static readonly CosmosContainer _container;
 
 		static DenormalizeData()
 		{
-			_client = new CosmosClient(Settings.CosmosConnectionString);
-			_database = _client.GetDatabase(Settings.ShindigManagerDatabaseName);
-			_container = _database.GetContainer(Settings.PresentationsContainerName);
+			_container = new CosmosClient(Settings.CosmosConnectionString)
+				.GetDatabase(Settings.ShindigManagerDatabaseName)
+				.GetContainer(Settings.PresentationsContainerName);
 		}
 
 		[FunctionName("DenormalizeData")]
