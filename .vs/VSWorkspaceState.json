@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Demos",
-    "\\Demos\\Archive Data",
-    "\\Demos\\Archive Data\\ArchiveData-Function"
+    "\\Demos\\BasicChangeFeedDemo-31"
   ],
-  "SelectedNode": "\\Demos\\Ch-ch-ch-changes.sln",
+  "SelectedNode": "\\Demos\\BasicChangeFeedDemo-31\\Function1.cs",
   "PreviewInSolutionExplorer": false
 }
