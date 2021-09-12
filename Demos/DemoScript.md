@@ -2,7 +2,7 @@
 
 1. [Basic Change Feed Demo](#basic-change-feed-demo)
 2. [Archiving Data](#archiving-data)
-3. Denormalizing Data
+3. [Denormalizing Data](#denormalizing-data)
 4. Replicating Containers
 
 All of these demos assume that a Cosmos DB account has been created using the Core (SQL) API.
@@ -115,3 +115,33 @@ All of these demos assume that a Cosmos DB account has been created using the Co
 4. Navigate to the *data-archival* container in the Azure Storage account to show that it is empty
 5. Ensure that the ArchiveData-Function and Demonstrator projects are set to start
 6. Run the demonstrator project and start the Archive Data demo and talk through what's happening
+
+---
+
+## Denormalizing Data
+
+#### Prep-Work
+
+1. Create an Azure Cosmos DB database labeled *shindigManger*
+2. Create a container within the *shindigManger* database labeled *metadata* with a partition key named *type*
+3. Create a container within the *shindigManger* database labeled *presentations* with a partition key named *eventId*
+4. Run the Demonstrator project and go to the Denormalization demo and perform the following tasks:
+* Upload Presentations
+* Upload Metadata
+
+#### Demo Steps
+1. Talk about how we are going to stimulate changes happening within denormalized data
+2. Talk through the code within the DenormalizeData function
+3. Run the DenormalizationData-Function project
+4. Perform the following query against the *presentations* container:
+
+~~~
+SELECT p.title, topics.name
+  FROM presentations p
+  JOIN topics IN p.topics
+ WHERE topics.id = 'Topic-5'
+~~~
+
+5. Go to the *metadata* container, find Topic-5, change 'Soft Skills' to 'People Skills'
+6. Show how the Azure Function was triggered
+7. Rerun the query above against the *presentations* container and show how 'Soft Skills' has been changed back to 'People Skills'

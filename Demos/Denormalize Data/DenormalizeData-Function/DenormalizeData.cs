@@ -25,7 +25,7 @@ namespace TaleLearnCode.ChChChChanges.Functions
 
 		[FunctionName("DenormalizeData")]
 		public static async Task RunAsync([CosmosDBTrigger(
-			databaseName: "shindigManager",
+			databaseName: "shindigs", // shindigManager
 			collectionName: "metadata",
 			ConnectionStringSetting = "CosmosConnectionString",
 			LeaseCollectionName = "leases",
@@ -71,7 +71,7 @@ namespace TaleLearnCode.ChChChChanges.Functions
 			{
 				foreach (var id in presentationsToUpdate)
 				{
-					var sql = $"SELECT * from presentations WHERE presentations.id = {id}";
+					var sql = $"SELECT * from presentations WHERE presentations.id = '{id}'";
 					QueryDefinition queryDefinition = new QueryDefinition(sql);
 					await foreach (var presentation in _container.GetItemQueryIterator<Presentation>(queryDefinition))
 					{
