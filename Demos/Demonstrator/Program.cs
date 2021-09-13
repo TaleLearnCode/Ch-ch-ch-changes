@@ -64,7 +64,8 @@ namespace Demonstrator
 				Console.WriteLine(@"/    \  \/|  |  \\__  \  /    \  / ___\_/ __ \   |    __)/ __ \_/ __ \ / __ | ");
 				Console.WriteLine(@"\     \___|   Y  \/ __ \|   |  \/ /_/  >  ___/   |     \\  ___/\  ___// /_/ | ");
 				Console.WriteLine(@" \______  /___|  (____  /___|  /\___  / \___  >  \___  / \___  >\___  >____ | ");
-				Console.WriteLine(@"        \/     \/     \/     \//_____/      \/       \/      \/     \/     \/ "); Console.ForegroundColor = ConsoleColor.White;
+				Console.WriteLine(@"        \/     \/     \/     \//_____/      \/       \/      \/     \/     \/ ");
+				Console.ForegroundColor = ConsoleColor.White;
 				Console.WriteLine();
 				Console.WriteLine();
 				Console.WriteLine("Choose the demo to run:");

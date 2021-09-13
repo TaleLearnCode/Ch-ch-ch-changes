@@ -192,3 +192,41 @@ SELECT p.title, topics.name
 5. Start the solution projects
 6. Start the *Replicating Containers* demo from the *Demonstrator* project
 7. Show how the records have been added to the *PresentationsByTag* container
+
+---
+
+## Event-Driven Architecture
+
+#### Prep-Work
+
+1. Create an Azure Cosmos DB database labeled *eventDrivenArchitecture*
+
+2. Create a container within the *eventDrivenArchitecture* database labeled *orders* with a partition key named *userName*
+
+3. Validate the following properties within the *Demonstrator* Settings class:
+* DataFolderPath
+* EventDrivenArchitectureDatabaseName
+* OrdersContainerName
+
+5. Validate the following settings within the *EventDrivenArchitecture-Function-Fulfillment* local.setings.json:
+* CosmosConnectionString
+* DatabaseName
+* OrdersContainerName
+
+6. Validate the following settings within the *EventDrivenArchitecture-Function-Inventory* local.setings.json:
+* CosmosConnectionString
+* DatabaseName
+* OrdersContainerName
+
+7. Validate the following settings within the *EventDrivenArchitecture-Function-Notification* local.setings.json:
+* CosmosConnectionString
+* DatabaseName
+* OrdersContainerName
+
+#### Demo Steps
+1. Talk about how we are going to stimulate an event-driven architecture demonstrating an order processing system
+3. Talk through the code within the *EventDrivenArchitecture-Function-Fulfillment* function
+4. Ensure that the *EventDrivenArchitecture-Function-Fulfillment*, *EventDrivenArchitecture-Function-Inventory*, *EventDrivenArchitecture-Function-Notification* and *Demonstrator* projects are set to start
+5. Start the solution projects
+6. Start the *Event-Driven Architecture* demo from the *Demonstrator* project
+7. Show how all the data has been updated within the *orders* container
