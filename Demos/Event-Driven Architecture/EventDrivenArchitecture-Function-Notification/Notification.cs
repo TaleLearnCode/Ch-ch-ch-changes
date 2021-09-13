@@ -17,14 +17,14 @@ namespace TaleLearnCode.ChChChChanges.Functions
 
 		static Notification()
 		{
-			_container = new CosmosClient(Settings.CosmosConnectionString)
-				.GetDatabase(Settings.OrderManagementDatabaseName)
-				.GetContainer(Settings.OrdersContainerName);
+			_container = new CosmosClient(Environment.GetEnvironmentVariable("CosmosConnectionString"))
+				.GetDatabase(Environment.GetEnvironmentVariable("DatabaseName"))
+				.GetContainer(Environment.GetEnvironmentVariable("OrdersContainerName"));
 		}
 
 		[FunctionName("Notification")]
 		public static async System.Threading.Tasks.Task RunAsync([CosmosDBTrigger(
-			databaseName: "orderManagement",
+			databaseName: "eventDrivenArchitecture",
 			collectionName: "orders",
 			ConnectionStringSetting = "CosmosConnectionString",
 			LeaseCollectionName = "leases",

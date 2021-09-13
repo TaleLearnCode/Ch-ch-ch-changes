@@ -18,7 +18,7 @@ namespace TaleLearnCode.ChChChChanges.Demonstrator
 		private EventDrivenArchitectureDemo(CosmosClient cosmosClient)
 		{
 			_container = cosmosClient
-				.GetDatabase(Settings.OrderManagementDatabaseName)
+				.GetDatabase(Settings.EventDrivenArchitectureDatabaseName)
 				.GetContainer(Settings.OrdersContainerName);
 			_fakeNames = GetFakeNames();
 			_products = GetProducts();
@@ -36,7 +36,7 @@ namespace TaleLearnCode.ChChChChanges.Demonstrator
 			{
 				while (!Console.KeyAvailable)
 				{
-					var order = GetOrder();
+					Order order = GetOrder();
 					await _container.CreateItemAsync(order);
 					Console.WriteLine($"Saved order #{order.Id}");
 					await Task.Delay(500);

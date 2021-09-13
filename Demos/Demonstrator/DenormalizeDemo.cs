@@ -15,14 +15,19 @@ namespace TaleLearnCode.ChChChChanges.Demonstrator
 
 		private readonly CosmosDatabase _database;
 
-		private DenormalizeDemo(CosmosClient cosmosClient)
+		private DenormalizeDemo(CosmosClient cosmosClient, string databaseName)
 		{
-			_database = cosmosClient.GetDatabase(Settings.ShindigManagerDatabaseName);
+			_database = cosmosClient.GetDatabase(databaseName);
 		}
 
 		public static async Task ExecuteAsync(CosmosClient cosmosClient)
 		{
-			await new DenormalizeDemo(cosmosClient).ExecuteAsync();
+			await new DenormalizeDemo(cosmosClient, Settings.DenormalizeDataDatabaseName).ExecuteAsync();
+		}
+
+		public static async Task AddPresentationsToCosmosAsync(CosmosClient cosmosClient)
+		{
+			await new DenormalizeDemo(cosmosClient, Settings.ReplicateDataDatabaseName).AddPresentationsToCosmosAsync();
 		}
 
 		private async Task ExecuteAsync()

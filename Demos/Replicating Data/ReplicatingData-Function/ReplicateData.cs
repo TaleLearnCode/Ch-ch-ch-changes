@@ -18,14 +18,14 @@ namespace TaleLearnCode.ChChChChanges.Functions
 
 		static ReplicateData()
 		{
-			_container = new CosmosClient(Settings.CosmosConnectionString)
-				.GetDatabase(Settings.ShindigManagerDatabaseName)
-				.GetContainer(Settings.PresentationsByTagContainerName);
+			_container = new CosmosClient(Environment.GetEnvironmentVariable("CosmosConnectionString"))
+				.GetDatabase(Environment.GetEnvironmentVariable("DatabaseName"))
+				.GetContainer(Environment.GetEnvironmentVariable("PresentationsByTagContainerName"));
 		}
 
 		[FunctionName("ReplicateData")]
 		public static async Task RunAsync([CosmosDBTrigger(
-			databaseName: "shindigManager",
+			databaseName: "replicateData",
 			collectionName: "presentations",
 			ConnectionStringSetting = "CosmosConnectionString",
 			LeaseCollectionName = "leases",
@@ -55,7 +55,7 @@ namespace TaleLearnCode.ChChChChanges.Functions
 							{
 								// Upsert present tags
 								var counter = 0;
-								foreach (var presentationByTag in presentationsByTag)
+								foreach (PresentationByTag presentationByTag in presentationsByTag)
 								{
 									await _container.UpsertItemAsync(presentationByTag);
 									counter++;
@@ -65,7 +65,7 @@ namespace TaleLearnCode.ChChChChanges.Functions
 								// Handle deleted tags
 								var sql = $"SELECT * FROM p WHERE p.presentationId = '{presentation.Id}'";
 								QueryDefinition queryDefinition = new QueryDefinition(sql);
-								await foreach (var presentationByTag in _container.GetItemQueryIterator<PresentationByTag>(queryDefinition))
+								await foreach (PresentationByTag presentationByTag in _container.GetItemQueryIterator<PresentationByTag>(queryDefinition))
 								{
 									if (presentation.Tags.FindIndex(x => x.Id == presentationByTag.TagId) == -1)
 									{

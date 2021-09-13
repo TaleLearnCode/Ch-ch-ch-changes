@@ -40,11 +40,7 @@ namespace Demonstrator
 						Console.ReadKey();
 						break;
 					case DemoOption.ReplicatingContainers:
-						Console.WriteLine();
-						Console.WriteLine();
-						Console.WriteLine("There is no dedicated demo; perform the demo from the Azure Portal.  Press any key to continue...");
-						Console.Beep();
-						Console.ReadKey();
+						await DenormalizeDemo.AddPresentationsToCosmosAsync(cosmosClient);
 						break;
 				}
 			}
@@ -68,15 +64,16 @@ namespace Demonstrator
 				Console.WriteLine(@"/    \  \/|  |  \\__  \  /    \  / ___\_/ __ \   |    __)/ __ \_/ __ \ / __ | ");
 				Console.WriteLine(@"\     \___|   Y  \/ __ \|   |  \/ /_/  >  ___/   |     \\  ___/\  ___// /_/ | ");
 				Console.WriteLine(@" \______  /___|  (____  /___|  /\___  / \___  >  \___  / \___  >\___  >____ | ");
-				Console.WriteLine(@"        \/     \/     \/     \//_____/      \/       \/      \/     \/     \/ "); Console.ForegroundColor = ConsoleColor.White;
+				Console.WriteLine(@"        \/     \/     \/     \//_____/      \/       \/      \/     \/     \/ ");
+				Console.ForegroundColor = ConsoleColor.White;
 				Console.WriteLine();
 				Console.WriteLine();
 				Console.WriteLine("Choose the demo to run:");
 				Console.WriteLine("\t [1]  Archiving Data");
-				Console.WriteLine("\t [2]  Replicating Containers");
-				Console.WriteLine("\t [3]  Denormalizing Data");
+				Console.WriteLine("\t [2]  Denormalizing Data");
+				Console.WriteLine("\t [3]  Replicating Containers");
 				Console.WriteLine("\t [4]  Event-Driven Architecture");
-				Console.WriteLine("\t [5]  Real-Time Reporting");
+				//Console.WriteLine("\t [5]  Real-Time Reporting");
 				Console.WriteLine("\t[ESC] Exit demo");
 				var keyPress = Console.ReadKey(true);
 				switch (keyPress.Key)
@@ -87,11 +84,11 @@ namespace Demonstrator
 						break;
 					case ConsoleKey.D2:
 					case ConsoleKey.NumPad2:
-						returnValue = (int)DemoOption.ReplicatingContainers;
+						returnValue = (int)DemoOption.DenormalizingData;
 						break;
 					case ConsoleKey.D3:
 					case ConsoleKey.NumPad3:
-						returnValue = (int)DemoOption.DenormalizingData;
+						returnValue = (int)DemoOption.ReplicatingContainers;
 						break;
 					case ConsoleKey.D4:
 					case ConsoleKey.NumPad4:

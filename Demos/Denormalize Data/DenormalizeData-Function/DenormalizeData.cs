@@ -18,14 +18,14 @@ namespace TaleLearnCode.ChChChChanges.Functions
 
 		static DenormalizeData()
 		{
-			_container = new CosmosClient(Settings.CosmosConnectionString)
-				.GetDatabase(Settings.ShindigManagerDatabaseName)
-				.GetContainer(Settings.PresentationsContainerName);
+			_container = new CosmosClient(Environment.GetEnvironmentVariable("CosmosConnectionString"))
+				.GetDatabase(Environment.GetEnvironmentVariable("DatabaseName"))
+				.GetContainer(Environment.GetEnvironmentVariable("PresentationsContainerName"));
 		}
 
 		[FunctionName("DenormalizeData")]
 		public static async Task RunAsync([CosmosDBTrigger(
-			databaseName: "shindigManager",
+			databaseName: "denormalizeData",
 			collectionName: "metadata",
 			ConnectionStringSetting = "CosmosConnectionString",
 			LeaseCollectionName = "leases",
@@ -71,7 +71,7 @@ namespace TaleLearnCode.ChChChChanges.Functions
 			{
 				foreach (var id in presentationsToUpdate)
 				{
-					var sql = $"SELECT * from presentations WHERE presentations.id = {id}";
+					var sql = $"SELECT * from presentations WHERE presentations.id = '{id}'";
 					QueryDefinition queryDefinition = new QueryDefinition(sql);
 					await foreach (var presentation in _container.GetItemQueryIterator<Presentation>(queryDefinition))
 					{
