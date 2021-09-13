@@ -18,9 +18,9 @@ namespace TaleLearnCode.ChChChChanges.Functions
 
 		static DenormalizeData()
 		{
-			_container = new CosmosClient(Settings.CosmosConnectionString)
-				.GetDatabase(Settings.ShindigManagerDatabaseName)
-				.GetContainer(Settings.PresentationsContainerName);
+			_container = new CosmosClient(Environment.GetEnvironmentVariable("CosmosConnectionString"))
+				.GetDatabase(Environment.GetEnvironmentVariable("ShindigMangerDatabaseName"))
+				.GetContainer(Environment.GetEnvironmentVariable("PresentationsContainerName"));
 		}
 
 		[FunctionName("DenormalizeData")]

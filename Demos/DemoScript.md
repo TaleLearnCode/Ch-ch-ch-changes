@@ -123,11 +123,26 @@ All of these demos assume that a Cosmos DB account has been created using the Co
 #### Prep-Work
 
 1. Create an Azure Cosmos DB database labeled *shindigManger*
+
 2. Create a container within the *shindigManger* database labeled *metadata* with a partition key named *type*
+
 3. Create a container within the *shindigManger* database labeled *presentations* with a partition key named *eventId*
-4. Run the Demonstrator project and go to the Denormalization demo and perform the following tasks:
+
+4. Validate the following properties within the *Demonstrator* Settings class:
+* DataFolderPath
+* ShindigManagerDatabaseName
+* PresentationsContainerName
+* MetadataContainerName
+
+4. Run the *Demonstrator* project and go to the Denormalization demo and perform the following tasks:
 * Upload Presentations
 * Upload Metadata
+
+5. Validate the following settings within the *DenomralizationData-Function* local.setings.json:
+* CosmosConnectionString
+* ShindigMangerDatabaseName
+* MetadataContainerName
+* PresentationsContainerName
 
 #### Demo Steps
 1. Talk about how we are going to stimulate changes happening within denormalized data
