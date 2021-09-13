@@ -4,7 +4,7 @@
 1. [Archiving Data](#archiving-data)
 2. [Denormalizing Data](#denormalizing-data)
 3. [Replicating Containers](#replicating-containers)
-4. Event-Driven Architecture
+4. [Event-Driven Architecture](#event-driven-architecture)
 
 All of these demos assume that a Cosmos DB account has been created using the Core (SQL) API.
 
@@ -95,7 +95,7 @@ All of these demos assume that a Cosmos DB account has been created using the Co
 * Ensure that that the container is empty
 
 2. Prepare the Azure Cosmos DB account to accept the data
-* Ensure that there is a ~moveData~ database with an empty ~archival~ container
+* Ensure that there is a ~moveData~ database with an empty ~archival~ container using the ~school~ partition key
 
 3. Add the following settings to the local.settings.json file within the ArchiveData-Function project:
 * CosmosConnectionString
@@ -172,7 +172,7 @@ SELECT p.title, topics.name
 
 2. Create a container within the *replicateData* database labeled *presentations* with a partition key named *eventId*
 
-3. Create a container within the *replicateData* database labeled *presentationsByTag* with a partition key named *tagId*
+3. Create a container within the *replicateData* database labeled *.* with a partition key named *tagId*
 
 4. Validate the following properties within the *Demonstrator* Settings class:
 * DataFolderPath
