@@ -40,11 +40,7 @@ namespace Demonstrator
 						Console.ReadKey();
 						break;
 					case DemoOption.ReplicatingContainers:
-						Console.WriteLine();
-						Console.WriteLine();
-						Console.WriteLine("There is no dedicated demo; perform the demo from the Azure Portal.  Press any key to continue...");
-						Console.Beep();
-						Console.ReadKey();
+						await DenormalizeDemo.AddPresentationsToCosmosAsync(cosmosClient);
 						break;
 				}
 			}

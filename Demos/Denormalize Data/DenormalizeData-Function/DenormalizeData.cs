@@ -19,13 +19,13 @@ namespace TaleLearnCode.ChChChChanges.Functions
 		static DenormalizeData()
 		{
 			_container = new CosmosClient(Environment.GetEnvironmentVariable("CosmosConnectionString"))
-				.GetDatabase(Environment.GetEnvironmentVariable("ShindigMangerDatabaseName"))
+				.GetDatabase(Environment.GetEnvironmentVariable("DatabaseName"))
 				.GetContainer(Environment.GetEnvironmentVariable("PresentationsContainerName"));
 		}
 
 		[FunctionName("DenormalizeData")]
 		public static async Task RunAsync([CosmosDBTrigger(
-			databaseName: "shindigs", // shindigManager
+			databaseName: "denormalizeData",
 			collectionName: "metadata",
 			ConnectionStringSetting = "CosmosConnectionString",
 			LeaseCollectionName = "leases",

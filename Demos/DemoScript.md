@@ -1,9 +1,10 @@
 # Ch-ch-ch-changes: Tracing Changes in Azure Cosmos DB
 
-1. [Basic Change Feed Demo](#basic-change-feed-demo)
-2. [Archiving Data](#archiving-data)
-3. [Denormalizing Data](#denormalizing-data)
-4. Replicating Containers
+0. [Basic Change Feed Demo](#basic-change-feed-demo)
+1. [Archiving Data](#archiving-data)
+2. [Denormalizing Data](#denormalizing-data)
+3. [Replicating Containers](#replicating-containers)
+4. Event-Driven Architecture
 
 All of these demos assume that a Cosmos DB account has been created using the Core (SQL) API.
 
@@ -122,17 +123,17 @@ All of these demos assume that a Cosmos DB account has been created using the Co
 
 #### Prep-Work
 
-1. Create an Azure Cosmos DB database labeled *shindigManger*
+1. Create an Azure Cosmos DB database labeled *denormalizeData*
 
-2. Create a container within the *shindigManger* database labeled *metadata* with a partition key named *type*
+2. Create a container within the *denormalizeData* database labeled *metadata* with a partition key named *type*
 
-3. Create a container within the *shindigManger* database labeled *presentations* with a partition key named *eventId*
+3. Create a container within the *denormalizeData* database labeled *presentations* with a partition key named *eventId*
 
 4. Validate the following properties within the *Demonstrator* Settings class:
 * DataFolderPath
-* ShindigManagerDatabaseName
 * PresentationsContainerName
 * MetadataContainerName
+* DenormalizeDataDatabaseName
 
 4. Run the *Demonstrator* project and go to the Denormalization demo and perform the following tasks:
 * Upload Presentations
@@ -140,7 +141,7 @@ All of these demos assume that a Cosmos DB account has been created using the Co
 
 5. Validate the following settings within the *DenomralizationData-Function* local.setings.json:
 * CosmosConnectionString
-* ShindigMangerDatabaseName
+* DatabaseName
 * MetadataContainerName
 * PresentationsContainerName
 
@@ -160,3 +161,34 @@ SELECT p.title, topics.name
 5. Go to the *metadata* container, find Topic-5, change 'Soft Skills' to 'People Skills'
 6. Show how the Azure Function was triggered
 7. Rerun the query above against the *presentations* container and show how 'Soft Skills' has been changed back to 'People Skills'
+
+---
+
+## Replicating Containers
+
+#### Prep-Work
+
+1. Create an Azure Cosmos DB database labeled *replicateData*
+
+2. Create a container within the *replicateData* database labeled *presentations* with a partition key named *eventId*
+
+3. Create a container within the *replicateData* database labeled *presentationsByTag* with a partition key named *tagId*
+
+4. Validate the following properties within the *Demonstrator* Settings class:
+* DataFolderPath
+* PresentationsContainerName
+* ReplicateDataDatabaseName
+
+5. Validate the following settings within the *ReplicatingData-Function* local.setings.json:
+* CosmosConnectionString
+* DatabaseName
+* PresentationsByTagContainerName
+
+#### Demo Steps
+1. Talk about how we are going to stimulate replicating data to different partitions to improve search
+2. In the Azure Portal, show how both the *Presentations* and *PresentationsByTag* containers are empty
+3. Talk through the code within the *ReplicatingData* function
+4. Ensure that the ReplicateData-Function and Demonstrator projects are set to start
+5. Start the solution projects
+6. Start the *Replicating Containers* demo from the *Demonstrator* project
+7. Show how the records have been added to the *PresentationsByTag* container
