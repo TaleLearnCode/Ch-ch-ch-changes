@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Demos",
-    "\\Demos\\Replicating Data",
-    "\\Demos\\Replicating Data\\ReplicatingData-Function"
+    "\\Demos\\Denormalize Data",
+    "\\Demos\\Denormalize Data\\DenormalizeData-Function"
   ],
-  "SelectedNode": "\\Demos\\Ch-ch-ch-changes.sln",
+  "SelectedNode": "\\Demos\\Denormalize Data\\DenormalizeData-Function\\DenormalizeData.cs",
   "PreviewInSolutionExplorer": false
 }
