@@ -104,14 +104,14 @@ namespace TaleLearnCode.ChChChChanges.Demonstrator
 
 			CosmosContainer container = _database.GetContainer(Settings.MetadataContainerName);
 
-			foreach (var item in metadata.Metadata)
+			foreach (Metadata item in metadata.Metadata)
 			{
 				counter++;
 				await container.CreateItemAsync(item);
 				progressBar.Tick($"Writing metadata item {counter} of {metadata.Metadata.Count + metadata.Speakers.Count}");
 			}
 
-			foreach (var speaker in metadata.Speakers)
+			foreach (Speaker speaker in metadata.Speakers)
 			{
 				counter++;
 				await container.CreateItemAsync(speaker);
@@ -133,7 +133,7 @@ namespace TaleLearnCode.ChChChChanges.Demonstrator
 
 			CosmosContainer container = _database.GetContainer(Settings.PresentationsContainerName);
 
-			foreach (var presentation in presentations)
+			foreach (Presentation presentation in presentations)
 			{
 				counter++;
 				await container.CreateItemAsync(presentation);
