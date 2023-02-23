@@ -30,7 +30,7 @@ The Azure Cosmos DB change feed listens to an Azure Cosmos container for any cha
 
 | Event | Location | Date | Time | Room | Downloads |
 |-----------|:-----------:|-----------:|-----------:|-----------:|-----------:|
-| [TechBash 2022](https://techbash.com/) | Pocono Manor, PA | November 8 - 11, 2022 | TBA | TBA | Available Afterwards |
+| [TechBash](https://techbash.com/) | Pocono Manor, PA | November 10, 2022 | 2:50 pm EST | Kilimanjaro 8 | [Slides](Presentations/ChChChChanges-Techbash.pdf) |
 | [dev up 2022](https://www.devupconf.org/speakers/chad-green) | St. Charles, MO | June 8, 2022 | 8:30 am CDT | Insight | [Slides](Presentations/ChChChChanges-DevUp.pdf) |
 | [Music City Tech](https://whova.com/embedded/speaker_session_detail/music_202109/1891041/) | Nashville, TN (Online) | September 17, 2021 | 1:00 pm CDT | N/A | Available Afterwards |
 | [KCDC](https://www.kcdc.info/) | Kansas City, MO | September 16, 2021 | 2:30 pm CDT | 2209 | [Slides](https://chadgreen.blob.core.windows.net/slides/ChChChChanges-KCDC.pdf) |

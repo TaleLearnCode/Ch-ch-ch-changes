@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Demos",
+    "\\Demos\\Demonstrator",
     "\\Presentations"
   ],
-  "SelectedNode": "\\Demos\\Ch-ch-ch-changes.sln",
+  "SelectedNode": "\\Demos\\Demonstrator\\EventDrivenArchitectureDemo.cs",
   "PreviewInSolutionExplorer": false
 }
