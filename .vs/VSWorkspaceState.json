@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Demos",
-    "\\Demos\\Demonstrator",
-    "\\Presentations"
+    "\\Presentations",
+    "\\Resources"
   ],
-  "SelectedNode": "\\Demos\\Demonstrator\\EventDrivenArchitectureDemo.cs",
+  "SelectedNode": "\\Resources\\resources.md",
   "PreviewInSolutionExplorer": false
 }
