@@ -1,5 +1,5 @@
 # Ch-ch-ch-changes: Tracing Changes in Azure Cosmos DB
-![Presentation Title](Thumbnail.jpg)
+![Ch-ch-ch-changes: Tracing Changes in Azure Cosmos DB](thumbnail.jpg)
 
 ## Short Abstract
 The Azure Cosmos DB change feed listens to an Azure Cosmos container for any changes and outputs the sorted lists of changed documents.  In this session, you learn the change feed, how it works, and how to use it to build more robust applications.
